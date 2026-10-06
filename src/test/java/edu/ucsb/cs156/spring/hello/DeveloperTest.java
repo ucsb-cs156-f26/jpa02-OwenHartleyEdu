@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 public class DeveloperTest {
@@ -22,12 +24,44 @@ public class DeveloperTest {
 
     @Test
     public void getName_returns_correct_name() {
-        // TODO: Replace Chris G. with your name as shown on
-        // <https://bit.ly/cs156-f26-teams>
-        assertEquals("Chris G.", Developer.getName());
+        // DONE: Replace Chris G. with your name as shown on the team spreadsheet
+        assertEquals("Owen", Developer.getName());
+    }
+    
+    @Test 
+    public void getGithubId_returns_correct() {
+        assertEquals("OwenHartleyEdu", Developer.getGithubId());
     }
 
-    // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
-    // 100% mutation coverage (all mutants timed out or killed)
+    @Test
+    public void getTeam_test(){
+        ArrayList<String> memberNames = new ArrayList<String>(
+            java.util.Arrays.asList(
+                "OWEN",
+                "CHRISTIAN",
+                "unknown1",
+                "unknown2",
+                "unknown3",
+                "unknown4"
+            )
+        );
+        memberNames.sort(null);
 
+        Team team = Developer.getTeam();
+        ArrayList<String> teamMembers = team.getMembers();
+        teamMembers.sort(null);
+        for (int i = 0; i < Math.max(teamMembers.size(), memberNames.size()); i++){
+            if(i >= memberNames.size()){
+                assert(false);
+            }
+            try {
+                String correct = memberNames.get(i);
+                String member = teamMembers.get(i);
+                assert(correct.equals(member));
+            } catch (IndexOutOfBoundsException e){
+                assert(false);
+            }
+
+        }
+    }
 }
