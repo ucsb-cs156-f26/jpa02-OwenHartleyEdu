@@ -37,12 +37,12 @@ public class DeveloperTest {
     public void getTeam_test(){
         ArrayList<String> memberNames = new ArrayList<String>(
             java.util.Arrays.asList(
-                "OWEN",
+            "ANDREW",
                 "CHRISTIAN",
-                "unknown1",
-                "unknown2",
-                "unknown3",
-                "unknown4"
+                "JONATHAN",
+                "NATHAN",
+                "OWEN",
+                "YIFAN"
             )
         );
         memberNames.sort(null);
